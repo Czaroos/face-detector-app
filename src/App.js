@@ -25,6 +25,13 @@ const particlesOptions = {
         value_area: 800
       }
     }
+  },
+  interactivity: {
+    onresize: {
+      enable: true,
+      density_auto: true,
+      density_area: 400
+    }
   }
 }
 
@@ -58,13 +65,13 @@ displayFaceBox = (box) => {
 }
 
 onInputChange = (event) => {
-  console.log(this.state.input);
   this.setState({input: event.target.value});
 }
 
-clearForm = () => {
+clearPage = () => {
   document.getElementById('imageUrlInput').value = '';
   this.setState({input: ''});
+  this.setState({imageURL: ''});
 }
 
 onSubmit = () => {
@@ -100,7 +107,7 @@ onRouteChange = (route) => {
           <ImageLinkForm
           onInputChange={this.onInputChange}
           onSubmit={this.onSubmit}
-          clearForm={this.clearForm}/>
+          clearPage={this.clearPage}/>
           <FaceRecognition
           box={box}
           imageURL={imageURL}/>
