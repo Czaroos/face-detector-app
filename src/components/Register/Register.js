@@ -28,10 +28,10 @@ class Register extends React.Component {
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         nickname: this.state.signUpNickname,
-        email: this.state.signInEmail,
-        password: this.state.signInPassword
-      })
-    })
+        email: this.state.signUpEmail,
+        password: this.state.signUpPassword
+      }) 
+    }) 
     .then(response => response.json())
     .then(user => {
       if (user) {
