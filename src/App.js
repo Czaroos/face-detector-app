@@ -90,7 +90,7 @@ clearPage = () => {
 
 onSubmit = () => {
   this.setState({imageURL: this.state.input});
-  fetch('http://localhost:3001/imageurl', {
+  fetch('https://whispering-depths-44095.herokuapp.com/imageurl', {
     method: 'post',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
@@ -100,7 +100,7 @@ onSubmit = () => {
   .then(response => response.json())
   .then(response => {
     if (response) {
-      fetch('http://localhost:3001/image', {
+      fetch('https://whispering-depths-44095.herokuapp.com:3001/image', {
         method: 'put',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
