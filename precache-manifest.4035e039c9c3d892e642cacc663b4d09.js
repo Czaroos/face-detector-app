@@ -12,23 +12,23 @@ self.__precacheManifest = [
     "url": "/face-detector-app/static/js/runtime~main.4848d6ff.js"
   },
   {
-    "revision": "71f09feac9be2305619b",
-    "url": "/face-detector-app/static/js/main.71f09fea.chunk.js"
+    "revision": "ed6483f9102597245bb0",
+    "url": "/face-detector-app/static/js/main.ed6483f9.chunk.js"
   },
   {
-    "revision": "83801d4e47fe875d9f4f",
-    "url": "/face-detector-app/static/js/1.83801d4e.chunk.js"
+    "revision": "1d2b4ad2643e73262cda",
+    "url": "/face-detector-app/static/js/1.1d2b4ad2.chunk.js"
   },
   {
-    "revision": "71f09feac9be2305619b",
-    "url": "/face-detector-app/static/css/main.ecd57e31.chunk.css"
+    "revision": "ed6483f9102597245bb0",
+    "url": "/face-detector-app/static/css/main.be6bc0f8.chunk.css"
   },
   {
-    "revision": "83801d4e47fe875d9f4f",
-    "url": "/face-detector-app/static/css/1.3436d986.chunk.css"
+    "revision": "1d2b4ad2643e73262cda",
+    "url": "/face-detector-app/static/css/1.4f08d256.chunk.css"
   },
   {
-    "revision": "6eda5ed35ec7d78774dbb13258a569e4",
+    "revision": "f867ff0d711f6697c46973d8ac7fca53",
     "url": "/face-detector-app/index.html"
   }
 ];

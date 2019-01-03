@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/face-detector-app/precache-manifest.3af71389acb3e2ead2b593fc32a4088f.js"
+  "/face-detector-app/precache-manifest.4035e039c9c3d892e642cacc663b4d09.js"
 );
 
 workbox.clientsClaim();
