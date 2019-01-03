@@ -18,6 +18,12 @@ class SignIn extends React.Component {
     this.setState({signInPassword: event.target.value})
   }
 
+  submitOnEnterPress = (event) => {
+    if (event.key === 'Enter') {
+      this.onSubmitSignIn();
+    }
+  }
+
   onSubmitSignIn = () => {
     fetch('https://whispering-depths-44095.herokuapp.com/signin', {
       method: 'post',
@@ -45,15 +51,15 @@ class SignIn extends React.Component {
         <legend className="f2 fw6 ph0 mh0">Sign In</legend>
         <div className="mt3">
           <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
-          <input onChange={this.onEmailChange} className="pa2 input-reset near-white ba b--white-30 bg-transparent w-100" type="email" name="email-address"  id="email-address"/>
+          <input onChange={this.onEmailChange} className="pa2 near-white ba b--white-30 bg-transparent w-100" type="email" name="email-address"  id="email-address"/>
         </div>
         <div className="mv3">
           <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
-          <input onChange={this.onPasswordChange} className="b pa2 input-reset near-white ba b--white-30 bg-transparent w-100" type="password" name="password"  id="password"/>
+          <input onKeyPress={this.submitOnEnterPress} onChange={this.onPasswordChange} className="b pa2 near-white ba b--white-30 bg-transparent w-100" type="password" name="password"  id="password"/>
         </div>
       </fieldset>
       <div className="">
-        <input className="b w-50 ph3 pv2 input-reset near-white ba b--white-30 bg-transparent grow pointer f6 dib" type="submit" value="Sign in" onClick={this.onSubmitSignIn}/>
+        <input className="b w-50 ph3 pv2 near-white ba b--white-30 bg-transparent grow pointer f6 dib" type="submit" value="Sign in" onClick={this.onSubmitSignIn}/>
       </div>
       <div className="lh-copy mt3">
         <p className="f6 link dim near-white db pointer">Register</p>

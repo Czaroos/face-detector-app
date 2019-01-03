@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Particles from 'react-particles-js';
-import Clarifai from 'clarifai';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import Navigation from './components/Navigation/Navigation';
 import Logo from './components/Logo/Logo';
@@ -86,39 +85,47 @@ clearPage = () => {
   document.getElementById('imageUrlInput').value = '';
   this.setState({input: ''});
   this.setState({imageURL: ''});
-}
+} 
 
 onSubmit = () => {
-  this.setState({imageURL: this.state.input});
-  fetch('https://whispering-depths-44095.herokuapp.com/imageurl', {
-    method: 'post',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({
-      input: this.state.input
+  if (this.state.imageURL === '')
+  {
+    this.setState({imageURL: this.state.input});
+    fetch('https://whispering-depths-44095.herokuapp.com/imageurl', {
+      method: 'post',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        input: this.state.input
+      })
     })
-  })
-  .then(response => response.json())
-  .then(response => {
-    if (response) {
-      fetch('https://whispering-depths-44095.herokuapp.com:3001/image', {
-        method: 'put',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-          id: this.state.user.id
-        })
-      })
-      .then(response => response.json())
-      .then(count => {
-        this.setState(Object.assign(
-          this.state.user,
-          { entries: count }
-        ))
-      })
-      .catch(console.log)
-    }
-    this.displayFaceBox(this.calculateFaceLocation(response))
-   })
-  .catch(err => console.log(err));
+    .then(response => {
+      if (response.status !== 400) {
+        response.json()
+        .then(response => {
+          fetch('https://whispering-depths-44095.herokuapp.com/image', {
+            method: 'put',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+              id: this.state.user.id
+            })
+          })
+          .then(response => response.json())
+          .then(count => {
+            this.setState(Object.assign(
+              this.state.user,
+              { entries: count }
+            ))
+          })
+          this.displayFaceBox(this.calculateFaceLocation(response))
+         })
+        } else {
+          this.clearPage();
+          alert('Incorrect URL!');
+        }
+     })
+  } else {
+   alert('You have already posted an image!');
+  }
 }
 
 onRouteChange = (route) => {

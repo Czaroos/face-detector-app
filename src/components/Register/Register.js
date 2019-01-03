@@ -22,6 +22,12 @@ class Register extends React.Component {
     this.setState({signUpPassword: event.target.value})
   }
 
+  submitOnEnterPress = (event) => {
+    if (event.key === 'Enter') {
+      this.onSubmitSignIn();
+    }
+  }
+
   onSubmitSignUp = () => {
     fetch('https://whispering-depths-44095.herokuapp.com/register', {
       method: 'post',
@@ -58,7 +64,7 @@ class Register extends React.Component {
           </div>
           <div className="mv3">
             <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
-            <input onChange={this.onPasswordChange} className="b pa2 input-reset near-white ba b--white-30 bg-transparent w-100" type="password" name="password"  id="password"/>
+            <input onKeyPress={this.submitOnEnterPress} onChange={this.onPasswordChange} className="b pa2 input-reset near-white ba b--white-30 bg-transparent w-100" type="password" name="password"  id="password"/>
           </div>
         </fieldset>
         <div className="">
